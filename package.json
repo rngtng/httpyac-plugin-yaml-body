@@ -1,0 +1,33 @@
+{
+  "name": "httpyac-plugin-yaml-body",
+  "version": "0.1.0",
+  "description": "HttpYac plugin to enable yaml notation for sending JSON request bodies",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rngtng/httpyac-plugin-yaml-body.git"
+  },
+  "keywords": [
+    "httpyac",
+    "plugin",
+    "yaml",
+    "json"
+  ],
+  "author": "RngTng",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rngtng/httpyac-plugin-yaml-body/issues"
+  },
+  "homepage": "https://github.com/rngtng/httpyac-plugin-yaml-body#readme",
+  "dependencies": {
+    "yaml": "^1.10.2"
+  },
+  "devDependencies": {
+    "httpyac": "^4.7.3",
+    "jest": "^27.4.3",
+    "mockttp": "^2.4.0"
+  }
+}

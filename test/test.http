@@ -1,0 +1,16 @@
+### withYaml
+POST http://localhost:8080
+---
+id: 1
+
+### withJson
+POST http://localhost:8080
+{
+  "id": 1
+}
+
+### withEnforcedYaml
+POST http://localhost:8080
+Content-Type: application/x-yaml
+---
+id: 1
