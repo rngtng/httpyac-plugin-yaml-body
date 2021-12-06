@@ -1,5 +1,5 @@
 {{
-  const plugin = require("../src/index");
+  const plugin = require("../../src/index");
   plugin(httpFile);
 }}
 
