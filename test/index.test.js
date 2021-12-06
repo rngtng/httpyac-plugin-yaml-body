@@ -23,8 +23,8 @@ describe('yaml body', () => {
     await exec('withYaml');
 
     const requests = await endpointMock.getSeenRequests();
-    expect(requests[0].body.text).toEqual("{\n  \"id\": 1\n}");
-    expect(requests[0].headers['Content-Type']).toEqual("application/json");
+    expect(requests[0].body.text).toEqual("{\"id\":1}");
+    expect(requests[0].headers['content-type']).toEqual("application/json");
   });
 
   it('keeps json', async () => {
@@ -40,6 +40,24 @@ describe('yaml body', () => {
     const endpointMock = await mockServer.post("/").thenReply(200, "OK");
 
     await exec('withEnforcedYaml');
+
+    const requests = await endpointMock.getSeenRequests();
+    expect(requests[0].body.text).toEqual("---\nid: 1");
+  });
+
+  it('keeps yaml when lowercase header', async () => {
+    const endpointMock = await mockServer.post("/").thenReply(200, "OK");
+
+    await exec('withEnforcedYamlAndLowercaseHeader');
+
+    const requests = await endpointMock.getSeenRequests();
+    expect(requests[0].body.text).toEqual("---\nid: 1");
+  });
+
+  it('keeps yaml when alternative yaml content-type', async () => {
+    const endpointMock = await mockServer.post("/").thenReply(200, "OK");
+
+    await exec('withEnforcedYamlAlternativeContentType');
 
     const requests = await endpointMock.getSeenRequests();
     expect(requests[0].body.text).toEqual("---\nid: 1");

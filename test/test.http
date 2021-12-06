@@ -1,3 +1,8 @@
+{{
+  const plugin = require("../src/index");
+  plugin(httpFile);
+}}
+
 ### withYaml
 POST http://localhost:8080
 ---
@@ -12,5 +17,17 @@ POST http://localhost:8080
 ### withEnforcedYaml
 POST http://localhost:8080
 Content-Type: application/x-yaml
+---
+id: 1
+
+### withEnforcedYamlAndLowercaseHeader
+POST http://localhost:8080
+content-type: application/x-yaml
+---
+id: 1
+
+### withEnforcedYamlAlternativeContentType
+POST http://localhost:8080
+Content-Type: text/yaml
 ---
 id: 1
