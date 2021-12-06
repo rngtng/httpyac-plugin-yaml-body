@@ -2,6 +2,8 @@
 
 HttpYac plugin to enable yaml notation for sending JSON request bodies. Pure syntactic sugar!
 
+[![build](https://github.com/rngtng/httpyac-plugin-yaml-body/actions/workflows/main.yml/badge.svg)](https://github.com/rngtng/httpyac-plugin-yaml-body/actions/workflows/main.yml)
+
 ## Installation
 
 ```
