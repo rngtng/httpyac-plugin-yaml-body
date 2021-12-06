@@ -4,13 +4,11 @@ module.exports = (request) => {
 
   function hasContentTypeKey(headers) {
     if (headers) {
-      console.log(headers);
       const entry = Object.entries(headers).find(([key]) => key.toLowerCase() === contentTypeKey.toLowerCase());
       if (entry && entry.length > 1) {
         return true;
       }
     }
-    console.log("GALSE");
     return false;
   }
 
