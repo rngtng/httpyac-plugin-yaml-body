@@ -32,4 +32,12 @@ Conten-Type: application/json
 
 ### Enforce yaml
 
-In case of `Content-Type` header is expliclit set to `application/x-yaml`, no conversion happens
+In case of a `Content-Type` header is present, no converstion happens, even if body is yaml.
+
+## TODO
+
+* [ ] no failure if body is buffer or array
+* [ ] switch to TS
+* [ ] add ESLINT
+
+
