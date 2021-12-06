@@ -1,6 +1,6 @@
 # httpyac-plugin-yaml-body
 
-HttpYac plugin to enable yaml notation for sending JSON request bodies. Pure syntactic sugar!
+[HttpYac plugin](https://httpyac.github.io) to enable yaml notation for sending JSON request bodies. Pure syntactic sugar!
 
 [![build](https://github.com/rngtng/httpyac-plugin-yaml-body/actions/workflows/main.yml/badge.svg)](https://github.com/rngtng/httpyac-plugin-yaml-body/actions/workflows/main.yml)
 
@@ -26,7 +26,7 @@ gets translated to
 
 ```
 POST http://localhost:8080
-Conten-Type: application/json
+Content-Type: application/json
 {
   "id": 1
 }
