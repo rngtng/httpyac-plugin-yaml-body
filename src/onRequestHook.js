@@ -12,11 +12,15 @@ module.exports = (request) => {
     return false;
   }
 
+  function isString(string) {
+    return (typeof string === 'string' || string instanceof String)
+  }
+
   function hasYamlHeader(string) {
     return string.split('\n')[0] === '---';
   }
 
-  if (!hasContentTypeKey(request.headers) && hasYamlHeader(request.body)) {
+  if (!hasContentTypeKey(request.headers) && isString(request.body) && hasYamlHeader(request.body)) {
     request.headers[contentTypeKey] = "application/json";
     request.body = JSON.stringify(YAML.parse(request.body));
   }
