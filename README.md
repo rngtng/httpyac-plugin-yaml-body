@@ -13,7 +13,7 @@ npm install httpyac-plugin-yaml-body --save
 ## Usage
 
 Plugin adds syntactic sugar to ease dealing with JSON bodies. With the plugin, the body can be in yaml
-format, which will be converted to JSON before the request is send. The correct Content-Type `application/json` will be set too.
+format, which will be converted to JSON before the request is send. The correct Content-Type `application/json` will be set too, if not yet provided.
 Ensure the first body line contains the yaml header to detect the format. Example:
 
 ```

@@ -1,15 +1,20 @@
 module.exports = (request) => {
   const YAML = require("yaml"),
-  contentTypeKey = "Content-Type";
+  contentTypeKey = "Content-Type",
+  jsonContentType = "application/json";
 
-  function hasContentTypeKey(headers) {
+  function getHeader(headers, headerName) {
     if (headers) {
-      const entry = Object.entries(headers).find(([key]) => key.toLowerCase() === contentTypeKey.toLowerCase());
+      const entry = Object.entries(headers).find(([key]) => key.toLowerCase() === headerName.toLowerCase());
       if (entry && entry.length > 1) {
-        return true;
+        return entry[1];
       }
     }
-    return false;
+    return undefined;
+  }
+
+  function isJsonOrNoContentType(contentType) {
+    return !(contentType && contentType !== jsonContentType)
   }
 
   function isString(string) {
@@ -20,8 +25,12 @@ module.exports = (request) => {
     return string.split('\n')[0] === '---';
   }
 
-  if (!hasContentTypeKey(request.headers) && isString(request.body) && hasYamlHeader(request.body)) {
-    request.headers[contentTypeKey] = "application/json";
+  const contentType = getHeader(request.headers, contentTypeKey);
+
+  if (isJsonOrNoContentType(contentType) && isString(request.body) && hasYamlHeader(request.body)) {
+    if(contentType !== jsonContentType) {
+     request.headers[contentTypeKey] = jsonContentType;
+    }
     request.body = JSON.stringify(YAML.parse(request.body));
   }
 }
