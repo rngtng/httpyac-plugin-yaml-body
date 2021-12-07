@@ -17,6 +17,14 @@ describe('onRequestHook', () => {
     expect(request.headers['Content-Type']).toEqual("application/json");
   });
 
+  it('parsed body as json', () => {
+    request.headers["Content-Type"] = "application/json";
+    onRequestHook(request);
+
+    expect(request.body).toEqual("{\"id\":1}");
+    expect(request.headers['Content-Type']).toEqual("application/json");
+  });
+
   it('keeps body when no yaml', () => {
     request.body = "{\"id\":1}";
     onRequestHook(request);
@@ -24,7 +32,7 @@ describe('onRequestHook', () => {
     expect(request.body).toEqual("{\"id\":1}");
   });
 
-  it('keeps yaml when header ', () => {
+  it('keeps yaml when header', () => {
     request.headers["Content-Type"] = "application/x-yaml";
 
     onRequestHook(request);
