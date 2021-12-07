@@ -40,4 +40,12 @@ describe('onRequestHook', () => {
 
     expect(request.body).toEqual("---\nid: 1");
   });
+
+  it('skips empty body', () => {
+    request.body = undefined;
+    onRequestHook(request);
+
+    expect(request.body).toEqual(undefined);
+  });
+
 });
