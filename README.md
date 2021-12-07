@@ -36,10 +36,4 @@ Content-Type: application/json
 
 In case of a `Content-Type` header is present, no converstion happens, even if body is yaml.
 
-## TODO
-
-* [ ] no failure if body is buffer or array
-* [ ] switch to TS
-* [ ] add ESLINT
-
 
