@@ -1,0 +1,7 @@
+{
+  "name": "index.test",
+  "private": true,
+  "devDependencies": {
+    "httpyac-plugin-yaml-body": "../.."
+  }
+}
