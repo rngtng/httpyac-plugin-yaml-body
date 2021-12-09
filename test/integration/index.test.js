@@ -19,7 +19,7 @@ describe('httpyac-plugin-yaml-body', () => {
     ]);
 
     const requests = await endpointMock.getSeenRequests();
-    expect(requests[0].body.text).toEqual("{\"id\":1}");
+    expect(await requests[0].body.getJson()).toEqual({id:1});
     expect(requests[0].headers['content-type']).toEqual("application/json");
   });
 });
