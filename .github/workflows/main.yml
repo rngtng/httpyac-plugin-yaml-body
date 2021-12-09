@@ -24,6 +24,7 @@ jobs:
       with:
         node-version: 16
     - run: npm install
+    - run: npm install
+      working-directory: ./test/integration
     - run: |
         npm run test
-        $LASTEXITCODE
