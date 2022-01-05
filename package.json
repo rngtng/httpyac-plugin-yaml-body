@@ -1,10 +1,12 @@
 {
   "name": "httpyac-plugin-yaml-body",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "HttpYac plugin to enable yaml notation for sending JSON request bodies",
   "main": "src/index.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "test-int": "jest test/integration",
+    "test-unit": "jest test/unit"
   },
   "repository": {
     "type": "git",
