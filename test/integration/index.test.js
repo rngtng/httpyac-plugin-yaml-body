@@ -5,6 +5,7 @@ mockServer = require("mockttp").getLocal();
 describe('httpyac-plugin-yaml-body', () => {
   beforeEach(() => mockServer.start(8080));
   afterEach(() => mockServer.stop());
+
   jest.spyOn(process, 'exit').mockImplementation();
   jest.spyOn(console, 'info').mockImplementation();
 

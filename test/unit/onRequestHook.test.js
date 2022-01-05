@@ -56,4 +56,24 @@ describe('onRequestHook', () => {
     expect(request.body).toEqual(undefined);
   });
 
+  it('parses null', () => {
+    request.body = "---\nid: null";
+    onRequestHook(request);
+
+    expect(request.body).toEqual("{\"id\":null}");
+  });
+
+  xit('parses float', () => {
+    request.body = "---\nid: \"0.00001\"";
+    onRequestHook(request);
+
+    expect(request.body).toEqual("{\"id\":0.00001}");
+  });
+
+  it('parses hex', () => {
+    request.body = "---\nid: \"0x0fC34BfA26D38494280681642A5E42733a084731\"";
+    onRequestHook(request);
+
+    expect(request.body).toEqual("{\"id\":\"0x0fC34BfA26D38494280681642A5E42733a084731\"}");
+  });
 });
