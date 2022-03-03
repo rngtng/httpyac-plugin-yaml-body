@@ -10,7 +10,7 @@ describe('httpyac-plugin-yaml-body', () => {
   jest.spyOn(console, 'info').mockImplementation();
 
   it('parsed body as json', async () => {
-    const endpointMock = await mockServer.post("/").thenReply(200, "OK");
+    const endpointMock = await mockServer.getPost("/").thenReply(200, "OK");
 
     await cli.execute([
       '',
