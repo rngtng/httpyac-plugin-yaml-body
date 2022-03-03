@@ -28,7 +28,7 @@
     "yaml": "^1.10.2"
   },
   "devDependencies": {
-    "httpyac": "^4.7.3",
+    "httpyac": "^4.10.1",
     "jest": "^27.4.3",
     "mockttp": "^2.4.0"
   }
