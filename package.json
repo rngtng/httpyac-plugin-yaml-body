@@ -25,6 +25,9 @@
   },
   "homepage": "https://github.com/rngtng/httpyac-plugin-yaml-body#readme",
   "dependencies": {
+    "clipboardy": "^3.0.0",
+    "commander": "^9.0.0",
+    "dotenv": "^16.0.0",
     "yaml": "^1.10.2"
   },
   "devDependencies": {
