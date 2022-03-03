@@ -25,9 +25,14 @@
   },
   "homepage": "https://github.com/rngtng/httpyac-plugin-yaml-body#readme",
   "dependencies": {
+    "@grpc/grpc-js": "^1.5.4",
     "clipboardy": "^3.0.0",
     "commander": "^9.0.0",
     "dotenv": "^16.0.0",
+    "globby": "^13.1.1",
+    "mqtt": "^4.3.5",
+    "ws": "8.5",
+    "xml-formatter": "^2.6.1",
     "yaml": "^1.10.2"
   },
   "devDependencies": {
