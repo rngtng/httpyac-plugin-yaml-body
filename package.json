@@ -3,6 +3,7 @@
   "version": "0.2.1",
   "description": "HttpYac plugin to enable yaml notation for sending JSON request bodies",
   "main": "src/index.js",
+  "type": "module",
   "scripts": {
     "test": "jest",
     "test-int": "jest test/integration",
@@ -36,7 +37,7 @@
     "yaml": "^1.10.2"
   },
   "devDependencies": {
-    "httpyac": "^4.10.1",
+    "httpyac": "^4.10.2",
     "jest": "^27.4.3",
     "mockttp": "^2.4.0"
   }
