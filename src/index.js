@@ -1,5 +1,5 @@
 // import onRequestHook from './onRequestHook';
 
-exports = (api) => {
+export = (api) => {
   // api.hooks.onRequest.addHook("parseYamlBody", onRequestHook );
 };
