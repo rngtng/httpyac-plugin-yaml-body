@@ -1,6 +1,8 @@
-const  { cli } = require('httpyac'),
-path = require('path'),
-mockServer = require("mockttp").getLocal();
+import { cli } from 'httpyac';
+import path from 'path';
+import mockttp from 'mockttp';
+
+const mockServer = mockttp.getLocal();
 
 describe('httpyac-plugin-yaml-body', () => {
   beforeEach(() => mockServer.start(8080));
