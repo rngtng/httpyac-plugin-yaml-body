@@ -1,6 +1,6 @@
-const plugin = require("../../src/index");
+import plugin from '../../src/index';
 
-module.exports = {
+export default {
   configureHooks: function (api) {
     plugin(api);
 	}

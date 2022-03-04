@@ -1,4 +1,4 @@
-const onRequestHook = require('../../src/onRequestHook');
+import onRequestHook from '../../src/onRequestHook';
 
 describe('onRequestHook', () => {
   var request;

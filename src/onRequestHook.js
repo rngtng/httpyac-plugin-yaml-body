@@ -1,6 +1,7 @@
-module.exports = (request) => {
-  const YAML = require("yaml"),
-  contentTypeKey = "Content-Type",
+import YAML from 'yaml';
+
+export default (request) => {
+  const contentTypeKey = "Content-Type",
   jsonContentType = "application/json";
 
   function getHeader(headers, headerName) {
@@ -33,4 +34,4 @@ module.exports = (request) => {
     }
     request.body = JSON.stringify(YAML.parse(request.body));
   }
-}
+};

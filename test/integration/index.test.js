@@ -1,6 +1,8 @@
-const  { cli } = require('httpyac'),
-path = require('path'),
-mockServer = require("mockttp").getLocal();
+import { cli } from 'httpyac';
+import mockttp from 'mockttp';
+import { jest } from '@jest/globals';
+
+const mockServer = mockttp.getLocal();
 
 describe('httpyac-plugin-yaml-body', () => {
   beforeEach(() => mockServer.start(8080));
@@ -15,7 +17,7 @@ describe('httpyac-plugin-yaml-body', () => {
     await cli.execute([
       '',
       '',
-      path.join(__dirname, '/test.http'),
+      './test/integration/test.http',
       '-n', 'withYaml'
     ]);
 

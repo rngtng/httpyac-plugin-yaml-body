@@ -1,12 +1,16 @@
 {
   "name": "httpyac-plugin-yaml-body",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "HttpYac plugin to enable yaml notation for sending JSON request bodies",
-  "main": "src/index.js",
+  "type": "module",
+  "exports": "./src/index.js",
+  "engines": {
+    "node": "^12.20.0 || ^14.13.1 || >=16.0.0"
+  },
   "scripts": {
-    "test": "jest",
-    "test-int": "jest test/integration",
-    "test-unit": "jest test/unit"
+    "test": "cross-env NODE_OPTIONS=--experimental-vm-modules jest",
+    "test-int": "cross-env NODE_OPTIONS=--experimental-vm-modules jest test/integration",
+    "test-unit": "cross-env NODE_OPTIONS=--experimental-vm-modules jest test/unit"
   },
   "repository": {
     "type": "git",
@@ -25,10 +29,19 @@
   },
   "homepage": "https://github.com/rngtng/httpyac-plugin-yaml-body#readme",
   "dependencies": {
+    "@grpc/grpc-js": "^1.5.4",
+    "clipboardy": "^3.0.0",
+    "commander": "^9.0.0",
+    "cross-env": "^7.0.3",
+    "dotenv": "^16.0.0",
+    "globby": "^13.1.1",
+    "mqtt": "^4.3.5",
+    "ws": "8.5",
+    "xml-formatter": "^2.6.1",
     "yaml": "^1.10.2"
   },
   "devDependencies": {
-    "httpyac": "^4.10.1",
+    "httpyac": "^4.10.2",
     "jest": "^27.4.3",
     "mockttp": "^2.4.0"
   }
