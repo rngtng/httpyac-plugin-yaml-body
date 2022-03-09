@@ -1,11 +1,11 @@
-const { store, send, io } = require('httpyac'),
- httpFileStore = new store.HttpFileStore(),
+const httpyac = require('httpyac'),
  fs = require('fs/promises'),
- { join, isAbsolute, dirname, extname } = require('path'),
- mockServer = require("mockttp").getLocal();
+ mockServer = require("mockttp").getLocal(),
+ path = require('path');
 
 function initFileProvider() {
-  const fileProvider = io.fileProvider;
+  const fileProvider = httpyac.io.fileProvider,
+  { join, isAbsolute, dirname, extname } = path;
 
   fileProvider.isAbsolute = async (fileName) => isAbsolute(fileProvider.toString(fileName));
   fileProvider.dirname = (fileName) => dirname(fileProvider.toString(fileName));
@@ -24,28 +24,23 @@ function initFileProvider() {
     fs.readdir(fileProvider.toString(dirname));
 }
 
-initFileProvider();
-
 describe('httpyac-plugin-yaml-body', () => {
+  beforeAll(initFileProvider);
   beforeEach(() => mockServer.start(8080));
   afterEach(() => mockServer.stop());
 
-  jest.spyOn(process, 'exit').mockImplementation();
-  jest.spyOn(console, 'info').mockImplementation();
-
   it('parsed body as json', async () => {
     const endpointMock = await mockServer.forPost("/").thenReply(200, "OK"),
-    fileName = 'test.http',
-    httpFile = await httpFileStore.getOrCreate(
-      fileName,
-      async () => await fs.readFile(join(__dirname, '/test.http'), 'utf8'),
+     httpFile = await new httpyac.store.HttpFileStore().getOrCreate(
+      'test.http',
+      async () => await fs.readFile(path.join(__dirname, '/test.http'), 'utf8'),
       0,
       {
         workingDir: __dirname,
       }
     );
 
-    await send({
+    await httpyac.send({
       httpFile
     });
 

@@ -22,7 +22,7 @@ module.exports = (request) => {
   }
 
   function hasYamlHeader(string) {
-    return string.split('\n')[0] === '---';
+    return string.split(/\r?\n/)[0] === '---';
   }
 
   const contentType = getHeader(request.headers, contentTypeKey);
