@@ -48,4 +48,25 @@ describe('httpyac-plugin-yaml-body', () => {
     expect(await requests[0].body.getJson()).toEqual({id:1});
     expect(requests[0].headers['content-type']).toEqual("application/json");
   });
+
+
+  it('parsed body as json with special content type', async () => {
+    const endpointMock = await mockServer.forPost("/").thenReply(200, "OK"),
+     httpFile = await new httpyac.store.HttpFileStore().getOrCreate(
+      'test.http',
+      async () => await fs.readFile(path.join(__dirname, '/test2.http'), 'utf8'),
+      0,
+      {
+        workingDir: __dirname,
+      }
+    );
+
+    await httpyac.send({
+      httpFile
+    });
+
+    const requests = await endpointMock.getSeenRequests();
+    expect(await requests[0].body.getJson()).toEqual({id:1});
+    expect(requests[0].headers['content-type']).toEqual("application/vnd.api+json");
+  });
 });
