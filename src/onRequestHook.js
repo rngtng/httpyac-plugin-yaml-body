@@ -1,7 +1,7 @@
 module.exports = (request) => {
   const YAML = require("yaml"),
   contentTypeKey = "Content-Type",
-  jsonContentType = "application/json";
+  jsonContentTypes = ["application/json", "application/vnd.api+json"];
 
   function getHeader(headers, headerName) {
     if (headers) {
@@ -14,7 +14,7 @@ module.exports = (request) => {
   }
 
   function isJsonOrNoContentType(contentType) {
-    return !(contentType && contentType !== jsonContentType)
+    return !(contentType && !jsonContentTypes.includes(contentType))
   }
 
   function isString(string) {
@@ -28,8 +28,8 @@ module.exports = (request) => {
   const contentType = getHeader(request.headers, contentTypeKey);
 
   if (isJsonOrNoContentType(contentType) && isString(request.body) && hasYamlHeader(request.body)) {
-    if(contentType !== jsonContentType) {
-     request.headers[contentTypeKey] = jsonContentType;
+    if(!contentType) {
+     request.headers[contentTypeKey] = jsonContentTypes[0];
     }
     request.body = JSON.stringify(YAML.parse(request.body));
   }

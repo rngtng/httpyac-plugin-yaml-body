@@ -32,8 +32,6 @@ Content-Type: application/json
 }
 ```
 
-### Enforce yaml
+### Enforce Yaml
 
-In case of a `Content-Type` header is present, no converstion happens, even if body is yaml.
-
-
+In case of a `Content-Type` header besides `application/json` or `application/vnd.api+json` is present, no conversion happens, even body is yaml.

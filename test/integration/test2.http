@@ -1,0 +1,5 @@
+### withYamlAndSpecialContentType
+POST http://localhost:8080
+Content-Type: application/vnd.api+json
+---
+id: 1
