@@ -6,7 +6,7 @@
 
 ## Installation
 
-```
+```js
 npm install httpyac-plugin-yaml-body --save
 ```
 
@@ -16,7 +16,7 @@ Plugin adds syntactic sugar to ease dealing with JSON bodies. With the plugin, t
 format, which will be converted to JSON before the request is send. The correct Content-Type `application/json` will be set too, if not yet provided.
 Ensure the first body line contains the yaml header to detect the format. Example:
 
-```
+```http
 POST http://localhost:8080
 ---
 id: 1
@@ -24,7 +24,7 @@ id: 1
 
 gets translated to
 
-```
+```http
 POST http://localhost:8080
 Content-Type: application/json
 {
